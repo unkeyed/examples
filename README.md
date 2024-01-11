@@ -8,6 +8,7 @@ This repository contains templates and quick-starts for building applications wi
 - Building OCR-as-a-service with Unkey
 - Unkey for multi-factor-login from the command line
 - API authentication with a variety of frameworks: Next.js, Koyeb, Bun
+- Using Unkey for temporary API keys
 - And more!
 
 # Contributing
