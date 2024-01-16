@@ -8,6 +8,13 @@ async function handler(req: NextRequestWithUnkeyContext) {
 
 	return new NextResponse(
 		`Your API key is valid!
-		${JSON.stringify(req.unkey, null, 2)}
-	`);
+		
+${JSON.stringify(req.unkey, null, 2)}
+	`,
+	);
 }
+
+export const POST = withUnkey(handler);
+export const GET = withUnkey(handler, {
+	getKey: (req) => new URL(req.url).searchParams.get("key"),
+});
