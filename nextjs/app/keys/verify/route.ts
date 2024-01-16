@@ -6,15 +6,8 @@ async function handler(req: NextRequestWithUnkeyContext) {
 		return new Response("unauthorized", { status: 403 });
 	}
 
-	return new NextResponse(`Your API key is valid!
-
-${JSON.stringify(req.unkey, null, 2)}`);
+	return new NextResponse(
+		`Your API key is valid!
+		${JSON.stringify(req.unkey, null, 2)}
+	`);
 }
-
-export const GET = withUnkey(handler, {
-	/**
-	 * Just for this demo we're passing the key in searchparams,
-	 * by default it is loaded from the `Authorization` header
-	 */
-	getKey: (req) => new URL(req.url).searchParams.get("key"),
-});
