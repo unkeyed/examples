@@ -18,8 +18,8 @@ dependencies:
     specifier: ^0.16.0
     version: 0.16.0
   '@unkey/nextjs':
-    specifier: 0.13.8-canary.0
-    version: 0.13.8-canary.0
+    specifier: 0.13.8-canary.2
+    version: 0.13.8-canary.2
   autoprefixer:
     specifier: ^10.4.16
     version: 10.4.16(postcss@8.4.33)
@@ -242,8 +242,8 @@ packages:
     resolution: {integrity: sha512-y7loET+ULNQIxfujwMv39Cu1h5I9eNPh9VBwxarhWWBSsRo6Id7nmb4cUYF6ltbarZ5BMqrVGeBjOyKtPpJPrg==}
     dev: false
 
-  /@unkey/nextjs@0.13.8-canary.0:
-    resolution: {integrity: sha512-8U2vkqLeHK2by/Gh7Nnjz04VUcSEYfXNLtAjf1TZ9ciC2DQX4ppm20znJQpGRDg9DtuEDqJo+6wdIJieNQLbYA==}
+  /@unkey/nextjs@0.13.8-canary.2:
+    resolution: {integrity: sha512-fJDy/ZZbhEyJ7Cr+iu6DmWmWPzoBAvZKnmpayM1wEAB4Zc7tdFIEshEPbZdTOKkdnkMHylkCP4P+tGVLn68qeQ==}
     dependencies:
       '@unkey/api': 0.16.0
     dev: false

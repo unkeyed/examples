@@ -1,10 +1,7 @@
 import { NextRequestWithUnkeyContext, withUnkey } from "@unkey/nextjs";
 import { NextResponse } from "next/server";
 
-async function handler(
-	req: NextRequestWithUnkeyContext,
-	ctx: { params: string },
-) {
+async function handler(req: NextRequestWithUnkeyContext) {
 	if (!req.unkey.valid) {
 		return new Response("unauthorized", { status: 403 });
 	}
