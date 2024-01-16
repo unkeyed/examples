@@ -5,7 +5,7 @@ Example of a generative AI application using Unkey for billing.
 - Includes example code to set up Stripe for payment links
 - On payment, users are assigned an Unkey API key with the 'remaining' field set to 10, signifying 10 credits
 - This API key is saved to a cookie (httpOnly, so not accessible via client-side Javascript)
-- This cookie is attached to requests to an API route in /api/openai; this API route verifies the key (decrementing `remaining`) and requests images from OpenAI
+- This cookie is attached to requests to an API route in /api/openai; this API route verifies the key (decrementing `remaining`) and requests images from OpenAI.
 
 ### Deploy to Vercel
 
