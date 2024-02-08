@@ -30,7 +30,7 @@ See the diagram below:
 
 ## Login
 
-`unkey-cli login` does the following:
+`npx @unkey/cli-demo login` does the following:
 
 1. Opens a new browser window for your user to log in with your service
 2. If this is sucessful, queries Unkey for a new API key
