@@ -1,0 +1,17 @@
+{
+  "name": "whitelabel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "Andreas Thomas",
+  "license": "ISC",
+  "dependencies": {
+    "@unkey/api": "^0.19.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.7",
+    "typescript": "^5.4.5",
+    "vercel": "^34.1.4"
+  }
+}
