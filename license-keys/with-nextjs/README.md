@@ -43,5 +43,5 @@ Now restart your development server and try to access the page again. You should
 
 ## License key management
 
-To manage license keys, you can use the [Unkey](https://unkey.com) Dashboard or API and optionally add a white-label proxy in between, like in this example. (See [white label](../whitelabel) for more information.) 
+To manage license keys, you can use the [Unkey](https://unkey.com) Dashboard or API and optionally add a white-label proxy in between, like in this example. (See [white label](https://github.com/unkeyed/examples/tree/main/license-keys/whitelabel) for more information.) 
 
