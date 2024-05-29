@@ -15,11 +15,11 @@ dependencies:
     specifier: ^18.2.14
     version: 18.2.18
   '@unkey/api':
-    specifier: ^0.16.0
-    version: 0.16.0
+    specifier: link:../../unkey/packages/api
+    version: link:../../unkey/packages/api
   '@unkey/nextjs':
-    specifier: 0.13.8-canary.2
-    version: 0.13.8-canary.2
+    specifier: link:../../unkey/packages/nextjs
+    version: link:../../unkey/packages/nextjs
   autoprefixer:
     specifier: ^10.4.16
     version: 10.4.16(postcss@8.4.33)
@@ -236,16 +236,6 @@ packages:
 
   /@types/scheduler@0.16.8:
     resolution: {integrity: sha512-WZLiwShhwLRmeV6zH+GkbOFT6Z6VklCItrDioxUnv+u4Ll+8vKeFySoFyK/0ctcRpOmwAicELfmys1sDc/Rw+A==}
-    dev: false
-
-  /@unkey/api@0.16.0:
-    resolution: {integrity: sha512-y7loET+ULNQIxfujwMv39Cu1h5I9eNPh9VBwxarhWWBSsRo6Id7nmb4cUYF6ltbarZ5BMqrVGeBjOyKtPpJPrg==}
-    dev: false
-
-  /@unkey/nextjs@0.13.8-canary.2:
-    resolution: {integrity: sha512-fJDy/ZZbhEyJ7Cr+iu6DmWmWPzoBAvZKnmpayM1wEAB4Zc7tdFIEshEPbZdTOKkdnkMHylkCP4P+tGVLn68qeQ==}
-    dependencies:
-      '@unkey/api': 0.16.0
     dev: false
 
   /ansi-regex@5.0.1:
