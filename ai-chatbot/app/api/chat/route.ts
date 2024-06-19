@@ -9,7 +9,7 @@ export const runtime = "edge";
 
 const openai = new OpenAI({
 	apiKey: process.env.OPENAI_API_KEY,
-	baseURL: "https://llmcache-preview.unkey.workers.dev",
+	baseURL: `https://${process.env.GATEWAY_NAME}.llm.unkey.io`,
 });
 
 export async function POST(req: Request) {
