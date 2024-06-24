@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 const openai = new OpenAI({
 	apiKey: process.env.OPENAI_API_KEY,
-	baseURL: "https://primary-mobile-lawrencium-3345.llm.unkey.io",
+	baseURL: `https://${process.env.GATEWAY_NAME}.llm.unkey.io`,
 	fetch: customFetch,
 });
 
