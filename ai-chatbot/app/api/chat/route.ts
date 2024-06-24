@@ -1,32 +1,54 @@
-import { kv } from "@vercel/kv";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import OpenAI from "openai";
 
-import { auth } from "@/auth";
-import { nanoid } from "@/lib/utils";
-
 export const runtime = "edge";
+export const dynamic = "force-dynamic";
 
 const openai = new OpenAI({
 	apiKey: process.env.OPENAI_API_KEY,
-	baseURL: `https://${process.env.GATEWAY_NAME}.llm.unkey.io`,
+	baseURL: "https://primary-mobile-lawrencium-3345.llm.unkey.io",
+	fetch: customFetch,
 });
+
+const state = { cache: false };
+
+async function customFetch(url: RequestInfo, options?: RequestInit) {
+	const response = await fetch(url, options);
+
+	// Log headers
+	const headers = response.headers;
+	headers.forEach((value, key) => {
+		if (key === "unkey-cache") {
+			if (value === "HIT") {
+				state.cache = true;
+			} else {
+				state.cache = false;
+			}
+		}
+	});
+
+	return response;
+}
 
 export async function POST(req: Request) {
 	const json = await req.json();
-	const { messages, previewToken } = json;
+	const { messages } = json;
 
-	if (previewToken) {
-		openai.apiKey = previewToken;
+	try {
+		const res = await openai.chat.completions.create({
+			model: "gpt-4",
+			messages,
+			stream: true,
+		});
+
+		const stream = OpenAIStream(res);
+
+		return new StreamingTextResponse(stream, {
+			headers: {
+				"X-Unkey-Cache": state.cache ? "HIT" : "MISS",
+			},
+		});
+	} catch (error) {
+		console.error(error);
 	}
-
-	const res = await openai.chat.completions.create({
-		model: "gpt-4",
-		messages,
-		stream: true,
-	});
-
-	const stream = OpenAIStream(res);
-
-	return new StreamingTextResponse(stream);
 }
