@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 export async function POST(req: Request) {
 	const openai = new OpenAI({
 		apiKey: process.env.OPENAI_API_KEY,
-		baseURL: `https://${process.env.GATEWAY_NAME}.llm.unkey.io`,
+		baseURL: "http://localhost:54490",
 		fetch: customFetch,
 	});
 
@@ -37,6 +37,7 @@ export async function POST(req: Request) {
 			model: "gpt-4",
 			messages,
 			stream: true,
+			noCache: true,
 		});
 
 		const stream = OpenAIStream(res);
