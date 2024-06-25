@@ -1,11 +1,9 @@
 import Link from "next/link";
 import * as React from "react";
 
-import { clearChats } from "@/app/actions";
 import { ClearHistory } from "@/components/clear-history";
 import { Sidebar } from "@/components/sidebar";
 import { SidebarFooter } from "@/components/sidebar-footer";
-import { SidebarList } from "@/components/sidebar-list";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
