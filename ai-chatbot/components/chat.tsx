@@ -50,17 +50,16 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
 			},
 			onResponse(response) {
 				console.info({ response });
-				response.headers.forEach((value, key) => {
-					if (key === "x-unkey-cache") {
-						if (value === "HIT") {
-							toast.success(
-								`Cache hit! Saved ${
-									encode(messages.at(-1)?.content).length
-								} tokens.`,
-							);
-						}
-					}
-				});
+				if (
+					response.headers.get("x-unkey-cache") === "HIT" &&
+					messages.at(-1)?.content
+				) {
+					toast.success(
+						`Cache hit! Saved ${
+							encode(messages.at(-1)?.content as string).length
+						} tokens.`,
+					);
+				}
 				if (response.status === 401) {
 					toast.error(response.statusText);
 				}
