@@ -1,7 +1,9 @@
 "use client";
 
-import { type Message, useChat } from "ai/react";
-
+import { type Message as AIMessage, useChat } from "ai/react";
+interface ExtendedMessage extends AIMessage {
+	cacheHit?: boolean;
+}
 import { ChatList } from "@/components/chat-list";
 import { ChatPanel } from "@/components/chat-panel";
 import { ChatScrollAnchor } from "@/components/chat-scroll-anchor";
@@ -24,7 +26,7 @@ import { encode } from "gpt-tokenizer";
 
 const IS_PREVIEW = process.env.VERCEL_ENV === "preview";
 export interface ChatProps extends React.ComponentProps<"div"> {
-	initialMessages?: Message[];
+	initialMessages?: ExtendedMessage[];
 	id?: string;
 }
 
@@ -37,6 +39,7 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
 	const [previewTokenInput, setPreviewTokenInput] = useState(
 		previewToken ?? "",
 	);
+	const [cacheHits, setCacheHits] = useState({});
 	const { messages, append, reload, stop, isLoading, input, setInput } =
 		useChat({
 			initialMessages,
@@ -46,6 +49,7 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
 				previewToken,
 			},
 			onResponse(response) {
+				console.info({ response });
 				response.headers.forEach((value, key) => {
 					if (key === "x-unkey-cache") {
 						if (value === "HIT") {

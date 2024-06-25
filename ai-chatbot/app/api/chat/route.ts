@@ -4,33 +4,31 @@ import OpenAI from "openai";
 export const runtime = "edge";
 export const dynamic = "force-dynamic";
 
-const openai = new OpenAI({
-	apiKey: process.env.OPENAI_API_KEY,
-	baseURL: `https://${process.env.GATEWAY_NAME}.llm.unkey.io`,
-	fetch: customFetch,
-});
-
-const state = { cache: false };
-
-async function customFetch(url: RequestInfo, options?: RequestInit) {
-	const response = await fetch(url, options);
-
-	// Log headers
-	const headers = response.headers;
-	headers.forEach((value, key) => {
-		if (key === "unkey-cache") {
-			if (value === "HIT") {
-				state.cache = true;
-			} else {
-				state.cache = false;
-			}
-		}
+export async function POST(req: Request) {
+	const openai = new OpenAI({
+		apiKey: process.env.OPENAI_API_KEY,
+		baseURL: `https://${process.env.GATEWAY_NAME}.llm.unkey.io`,
+		fetch: customFetch,
 	});
 
-	return response;
-}
+	async function customFetch(url: RequestInfo, options?: RequestInit) {
+		const response = await fetch(url, options);
 
-export async function POST(req: Request) {
+		// Log headers
+		const headers = response.headers;
+		headers.forEach((value, key) => {
+			if (key === "unkey-cache") {
+				if (value === "HIT") {
+					state.cache = true;
+				} else {
+					state.cache = false;
+				}
+			}
+		});
+
+		return response;
+	}
+	const state = { cache: false };
 	const json = await req.json();
 	const { messages } = json;
 
