@@ -19,7 +19,7 @@ export const metadata = {
 		description: "AI chatbot with built-in semantic caching",
 		images: [
 			{
-				url: "/og.png",
+				url: `https://${process.env.VERCEL_URL}/og.png`,
 				width: 1200,
 				height: 675,
 			},
