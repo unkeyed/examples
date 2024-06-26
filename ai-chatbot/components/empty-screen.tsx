@@ -35,7 +35,7 @@ export function EmptyScreen({ setInput }: Pick<UseChatHelpers, "setInput">) {
 					Because the caching is semantic, identical questions with different
 					phrasing will return the same answer from the cache.
 				</p>
-				<p>
+				<p className="leading-normal text-muted-foreground mt-2">
 					Thanks to{" "}
 					<Link target="_blank" href="https://github.com/vercel/ai-chatbot">
 						Vercel
