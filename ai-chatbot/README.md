@@ -7,9 +7,9 @@
 3. `pnpm install`
 4. `pnpm dev` to run this in development mode
 
-## Tech stack
+This uses Unkey for semantic caching: [https://github.com/unkeyed/unkey]
 
-This is a fork of the Next.js AI Chatbot, built with Next.js and Tailwind and deployed on Vercel.
+This is a fork of the [Next.js AI Chatbot](https://github.com/vercel/ai-chatbot), built with Next.js and Tailwind and deployed on Vercel.
 
 
 
