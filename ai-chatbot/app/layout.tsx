@@ -19,7 +19,7 @@ export const metadata = {
 		description: "AI chatbot with built-in semantic caching",
 		images: [
 			{
-				url: "https://unkey.com/images/blog-images/covers/semantic-cache.png",
+				url: "/og.png",
 				width: 1200,
 				height: 675,
 			},
