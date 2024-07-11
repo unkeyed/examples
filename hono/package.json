@@ -4,8 +4,8 @@
     "cf": "wrangler deploy --minify src/index.ts"
   },
   "dependencies": {
-    "@unkey/api": "link:../../unkey/packages/api",
-    "@unkey/hono": "link:../../unkey/packages/hono",
+    "@unkey/api": "^0.22.1",
+    "@unkey/hono": "^1.4.1",
     "hono": "^3.12.5"
   },
   "devDependencies": {
