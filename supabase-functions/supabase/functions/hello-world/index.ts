@@ -1,5 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { verifyKey } from "https://esm.sh/@unkey/api@0.10.0";
+import { verifyKey } from "https://esm.sh/@unkey/api@0.22.1";
 
 serve(async (req) => {
   try {
@@ -18,9 +18,12 @@ serve(async (req) => {
     }
     if (!result.valid) {
       // do not grant access
-      return new Response(JSON.stringify({ error: "API Key is not valid for this request" }), {
-        status: 401,
-      });
+      return new Response(
+        JSON.stringify({ error: "API Key is not valid for this request" }),
+        {
+          status: 401,
+        },
+      );
     }
     return new Response(JSON.stringify({ result }), { status: 200 });
   } catch (error) {

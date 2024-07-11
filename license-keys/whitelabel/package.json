@@ -7,7 +7,7 @@
   "author": "Andreas Thomas",
   "license": "ISC",
   "dependencies": {
-    "@unkey/api": "^0.19.5"
+    "@unkey/api": "^0.22.1"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",
