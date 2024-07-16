@@ -7,7 +7,7 @@ import { randomInt } from "crypto";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 /**
-   Configure the ratelimit to be 1 request every 60 seconds.
+   Configure the ratelimit to be 2 request every 60 seconds.
    We also care about being accurate over faster response
    so we will make sure it's a synchonorous rate limit.
 **/
@@ -15,7 +15,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const unkey = new Ratelimit({
   rootKey: process.env.UNKEY_ROOT_KEY!,
   namespace: "otp-limit",
-  limit: 1,
+  limit: 2,
   duration: "60s",
 });
 

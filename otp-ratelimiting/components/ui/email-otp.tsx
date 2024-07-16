@@ -1,42 +1,45 @@
 "use client";
-
 import { OTPInput, type SlotProps } from "input-otp";
 import * as React from "react";
 
-import { Loading } from "@/components/ui/loading";
 import { useToast } from "@/components/ui/use-toast";
 
 import { cn } from "@/lib/utils";
 import { Minus } from "lucide-react";
 
 import { useFormState, useFormStatus } from "react-dom";
-import { sendOTP } from "@/app/actions/send/action";
-import { useRouter, useSearchParams } from "next/navigation";
+import { verifyOTP } from "@/app/actions/verify/action";
+import { useSearchParams } from "next/navigation";
+import { SubmitButton } from "./submit-button";
+import { OTPButton } from "./otp-button";
 
 const initialState = {
-  success: false,
   statusCode: 0,
+  success: false,
+  error: "",
 };
 
 export const EmailCode: React.FC = () => {
   const { toast } = useToast();
   const searchParams = useSearchParams();
-  const email = searchParams.get("email");
-  const [isLoading, setIsLoading] = React.useState(false);
-  const verifyCode = async (otp: string) => {
-    setIsLoading(true);
+  const email = searchParams.get("email") || "";
+  const [state, formAction] = useFormState(verifyOTP, initialState);
 
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-    // This is where you would verify the code but...for this purpose we will just show you a success.
-    toast({
-      title: "Code successfully verfified",
-      description: "Thanks for testing our demo",
-    });
-  };
-
-  const [otp, setOtp] = React.useState("");
+  React.useEffect(() => {
+    if (state.statusCode === 200) {
+      toast({
+        title: "Woo!",
+        description: "Verified, keep trying to see our ratelimit",
+      });
+    }
+    if (state.statusCode > 200) {
+      toast({
+        title: "Oh No!",
+        description: state.error,
+        variant: "destructive",
+      });
+    }
+  }, [state, toast]);
 
   return (
     <div className="flex flex-col max-w-sm mx-auto text-left">
@@ -49,44 +52,13 @@ export const EmailCode: React.FC = () => {
       </p>
 
       <p className="mt-2 text-sm text-white/40">
-        Didn&apos;t receive the code?{" "}
-        <button
-          type="button"
-          className="text-white"
-          onClick={async () => {
-            const formData = new FormData();
-            // this shouldn't happen but they could land on the otp page;
-            if (email) {
-              formData.append("email", email);
-            }
-            const resendOTP = await sendOTP(formData);
-            if (resendOTP.statusCode === 201) {
-              toast({
-                title: "Success",
-                description: "We sent you a new OTP",
-              });
-            }
-            if (resendOTP.statusCode > 201) {
-              toast({
-                title: "Error",
-                description: resendOTP.error,
-                variant: "destructive",
-              });
-            }
-          }}
-        >
-          Resend
-        </button>
+        Didn&apos;t receive the code? <OTPButton email={email} />
       </p>
-      <form
-        className="flex flex-col gap-12 mt-10"
-        onSubmit={() => verifyCode(otp)}
-      >
+      <form className="flex flex-col gap-12 mt-10" action={formAction}>
         <OTPInput
           data-1p-ignore
-          value={otp}
-          onChange={setOtp}
-          onComplete={() => verifyCode(otp)}
+          name="code"
+          onComplete={() => {}}
           maxLength={6}
           render={({ slots }) => (
             <div className="flex items-center justify-between">
@@ -103,15 +75,7 @@ export const EmailCode: React.FC = () => {
           )}
         />
 
-        <button
-          type="submit"
-          className="flex items-center justify-center h-10 gap-2 px-4 text-sm font-semibold text-black duration-200 bg-white border border-white rounded-lg hover:border-white/30 hover:bg-black hover:text-white"
-          disabled={isLoading}
-          onClick={() => verifyCode(otp)}
-        >
-          {isLoading ? <Loading className="w-4 h-4 mr-2 animate-spin" /> : null}
-          Continue
-        </button>
+        <SubmitButton buttonTitle="Continue" />
       </form>
     </div>
   );
