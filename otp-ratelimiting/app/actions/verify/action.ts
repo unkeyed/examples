@@ -18,12 +18,18 @@ const unkey = new Ratelimit({
 export async function verifyOTP(prevState: any, formData: FormData) {
   try {
     // check for forwarded
-    const forwarded_ip = headers().get("x-forwarded-for");
+    let forwarded_ip = headers().get("x-forwarded-for");
     // check for real-ip
-    const real_ip = headers().get("x-real-ip");
+    let real_ip = headers().get("x-real-ip");
+    if (forwarded_ip) {
+      forwarded_ip.split(/, /)[0];
+    }
+    if (real_ip) {
+      real_ip = real_ip.trim();
+    }
 
     const code = formData.get("code") as string | null;
-    console.log(code);
+
     if (!code) {
       return {
         success: false,

@@ -22,10 +22,16 @@ const unkey = new Ratelimit({
 export async function sendOTP(formData: FormData) {
   try {
     // check for forwarded
-    const forwarded_ip = headers().get("x-forwarded-for");
+    // check for forwarded
+    let forwarded_ip = headers().get("x-forwarded-for");
     // check for real-ip
-    const real_ip = headers().get("x-real-ip");
-
+    let real_ip = headers().get("x-real-ip");
+    if (forwarded_ip) {
+      forwarded_ip.split(/, /)[0];
+    }
+    if (real_ip) {
+      real_ip = real_ip.trim();
+    }
     const email = formData.get("email") as string | null;
     if (!email) {
       return {
