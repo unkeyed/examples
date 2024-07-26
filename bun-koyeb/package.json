@@ -8,6 +8,6 @@
   "author": "Andreas Thomas",
   "license": "ISC",
   "dependencies": {
-    "@unkey/api": "workspace:^"
+    "@unkey/api": "^0.22.1"
   }
 }

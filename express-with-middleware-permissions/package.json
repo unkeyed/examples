@@ -10,7 +10,7 @@
   "author": "Andreas Thomas",
   "license": "ISC",
   "dependencies": {
-    "@unkey/api": "^0.19.4",
+    "@unkey/api": "^0.22.1",
     "dotenv": "^16.4.5",
     "express": "^4.19.2"
   },
