@@ -23,7 +23,7 @@ export default async function Home() {
             <p className="text-lg">
               Provide the best experience to your users, allowing them to try your API by simply copying code snippets without having to dig through your dashboard to find an API key.
             </p>
-            <footer className="text-sm"> Unkey allows you to recover keys securely, without having to worry about store anything in your database.
+            <footer className="text-sm"> Unkey allows you to recover keys securely, without having to worry about how to store anything in your database.
             </footer>
           </blockquote>
         </div>
