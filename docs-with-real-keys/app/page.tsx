@@ -82,7 +82,7 @@ const Docs: React.FC<{ userId: string }> = async (props) => {
 
   const key = listKeys.result.keys[0].plaintext!;
 
-  const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3000";
+  const baseUrl = process.env.VERCEL ? "https://docs-with-keys.vercel.app" : "http://localhost:3000";
 
   const snippet = `curl -XPOST '${baseUrl}/api/v1/fake-api' \\
     -H 'Content-Type: application/json' \\
