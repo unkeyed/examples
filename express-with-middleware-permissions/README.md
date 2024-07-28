@@ -14,17 +14,17 @@
 
 ### Create a permission and role
 
-1. Go to [app/authorization/permissions](https://unkey.dev/app/authorization/permissions) and click on the "Create New Permission" button.
+1. Go to [app/authorization/permissions](https://app.unkey.com/authorization/permissions) and click on the "Create New Permission" button.
 2. Enter `call-protected-route` as the name and add a description if you want.
 3. Click "Create New Permission"
-4. Now head over to [/app/authorization/roles](https://unkey.dev/app/authorization/roles) and click on the "Create New Role" button.
+4. Now head over to [/app/authorization/roles](https://app.unkey.com/authorization/roles) and click on the "Create New Role" button.
 5. Enter a name for the role, for example, `admin` and select the permission from the prevous step
 6. Click "Create".
 
 
 ### Create your API
 
-1. Go to [https://unkey.dev/app/apis](https://unkey.dev/app/apis) and click on the "Create New API" button.
+1. Go to [https://app.unkey.com/apis](https://app.unkey.com/apis) and click on the "Create New API" button.
 2. Give it a name.
 3. Click "Create".
 
@@ -38,7 +38,7 @@
 
 ### Connect the key to the role
 
-1. Go to [/app/apis](https://unkey.dev/app/apis) and click on the API you created.
+1. Go to [/app/apis](https://app.unkey.com/apis) and click on the API you created.
 2. Click on "Keys" in the tabs.
 3. Click on the key you created.
 4. Click on "Permissions" in the tabs.

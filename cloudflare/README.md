@@ -27,7 +27,7 @@ This will output the URL of the worker. Let's use it to send a request.
 
 ## Test
 
-Go to [unkey.dev](https://unkey.dev/app) and create a new key. Then, send a request to the worker.
+Go to [unkey.dev](https://app.unkey.com) and create a new key. Then, send a request to the worker.
 
 
 ```bash

@@ -2,7 +2,7 @@
 ## Getting Started
 
 
-1. Go to [unkey.dev](https://unkey.dev/app) and create a new API.
+1. Go to [unkey.dev](https://app.unkey.com) and create a new API.
 2. Copy your workspace token and `apiId` to `.env`
 3. Install and run the example
 ```bash

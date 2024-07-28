@@ -4,7 +4,7 @@ This examples shows you, how you can secure your Supabase functions with Unkey.
 
 ## Usage
 
-1. Go to [unkey.dev](https://unkey.dev/app) and create an account, make sure you have an account with Supabase.
+1. Go to [unkey.dev](https://app.unkey.com) and create an account, make sure you have an account with Supabase.
 
 2. Run the example
 ```bash

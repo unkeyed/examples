@@ -4,8 +4,8 @@ This example is a [Next.js](https://nextjs.org/) project bootstrapped with [`cre
 
 The examples only requires two environment variables.
 
-- `UNKEY_ROOT_KEY` - One can be created at [here](`https://unkey.dev/app/settings/root-keys`).
-- `UNKEY_API_ID` - One can be created at [here](`https://unkey.dev/app/apis`). After selecting the api the id can be found in the top right.
+- `UNKEY_ROOT_KEY` - One can be created at [here](`https://app.unkey.com/settings/root-keys`).
+- `UNKEY_API_ID` - One can be created at [here](`https://app.unkey.com/apis`). After selecting the api the id can be found in the top right.
 
 Configure these environments variables in a `.env` file.
 

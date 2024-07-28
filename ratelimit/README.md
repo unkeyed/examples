@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-Go to [unkey.dev](https://unkey.dev/app) and create a new root key. The onboarding flow will create one for you.
+Go to [unkey.dev](https://app.unkey.com) and create a new root key. The onboarding flow will create one for you.
 Take the root key and create a `.env.local` file in the root of the project. Add the following line to the file:
 
 ```bash

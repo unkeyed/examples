@@ -22,7 +22,7 @@ This example uses a supervision tree to [start the SDK](https://github.com/unkey
 
 The GenServer takes a map with two properties.
 
-- token: Your [Unkey](https://unkey.dev) Access token used to make requests. You can create one [here](https://unkey.dev/app/keys) **required**
+- token: Your [Unkey](https://unkey.dev) Access token used to make requests. You can create one [here](https://app.unkey.com/keys) **required**
 - base_url: The base URL endpoint you will be hitting i.e. `https://api.unkey.dev/v1/keys` (optional).
 
 ```elixir
@@ -39,7 +39,7 @@ Supervisor.count_children(pid)
 #=> %{active: 1, specs: 1, supervisors: 0, workers: 1}
 ```
 
-> **NOTE** In order to run this project either create a `config/dev.secret.exs` file with the key `unkey_elixir_sdk_example` and values specified in `.env.example` ([token](<(https://unkey.dev/app/keys)>) & [apiId](https://unkey.dev/docs/quickstart#4-create-your-first-api-key)) OR directly use the environment variables in code (not recommended).
+> **NOTE** In order to run this project either create a `config/dev.secret.exs` file with the key `unkey_elixir_sdk_example` and values specified in `.env.example` ([token](<(https://app.unkey.com/keys)>) & [apiId](https://unkey.dev/docs/quickstart#4-create-your-first-api-key)) OR directly use the environment variables in code (not recommended).
 
 ## Run the project
 
