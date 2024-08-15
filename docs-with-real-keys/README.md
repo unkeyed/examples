@@ -31,24 +31,24 @@
 
 1. Clone the repository
 ```bash
-  git clone git@github.com:unkeyed/examples.git
-  cd examples/docs-with-real-keys
+git clone git@github.com:unkeyed/examples.git
+cd examples/docs-with-real-keys
 ```
 
 2. Install the dependencies
 ```bash
-  pnpm install
+pnpm install
 ```
 
 3. Create a `.env` file and add the following:
 ```env
-  UNKEY_ROOT_KEY=your-root-key
-  UNKEY_API_ID=your-api-id
+UNKEY_ROOT_KEY=your-root-key
+UNKEY_API_ID=your-api-id
 ```
 
 4. Start the server
 ```bash
-  pnpm dev
+pnpm dev
 ```
 
 5. Open your browser and go to [http://localhost:3000](http://localhost:3000)
