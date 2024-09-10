@@ -3,6 +3,7 @@ import OpenAI from 'openai';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
+  baseURL: process.env.SEMANTIC_CACHE_GATEWAY_URL
 });
 
 export default async function handler(
@@ -11,10 +12,10 @@ export default async function handler(
 ) {
   if (req.method === 'POST') {
     try {
-      const { subject } = req.body;
+      const { selectedSubject } = req.body;
       const response = await openai.chat.completions.create({
         model: "gpt-4o-mini",
-        messages: [{ role: "user", content: `write a haiku about ${subject}` }],
+        messages: [{ role: "user", content: `write a haiku about ${selectedSubject}` }],
       });
 
       res.status(200).json({ message: response.choices[0].message.content });
