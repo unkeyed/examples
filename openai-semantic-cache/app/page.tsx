@@ -73,7 +73,6 @@ export default function Home() {
                   id="subjectSelector"
                   name="selectedSubject"
                   value={formData.selectedSubject}
-                  className=""
                   onChange={handleChange}
                   required
                 > 
@@ -86,7 +85,7 @@ export default function Home() {
                 </select>
                 <button 
                   type="submit"
-                  className="w-full py-2 px-4 my-4 rounded bg-indigo-600"
+                  className="w-full py-2 px-4 my-4 rounded bg-indigo-600 disabled:bg-gray-400"
                   disabled={isLoading || !formData.selectedSubject}
                 >
                   Generate
