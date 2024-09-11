@@ -32,7 +32,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 2. Copy your gateway URL at the top of the screen OR navigate to Settings to retrieve your gateway URL.
 3. Locate the OpenAI constructor within your application. 
 
-*In this example, it is behind a NextJS route located at `/pages/api/openai.ts`. This will allow you to add other Unkey features such as rate limiting on this API route (not covered in this example)*
+*In this example, it is behind a NextJS route located at `/app/openai/route.ts`. This will allow you to add other Unkey features such as rate limiting on this route (not covered in this example)*
 
 4. Override the default `baseURL` within your initial constructor per [documentation](https://www.unkey.com/docs/semantic-cache/introduction): 
 

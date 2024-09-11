@@ -28,7 +28,7 @@ export default function Home() {
   }
 
   const handleSubmit = async (event:FormEvent<HTMLFormElement>) => {
-    const OPENAI_URL = '/api/openai';
+    const OPENAI_URL = '/openai';
 
     event.preventDefault();
     setIsLoading(true);
