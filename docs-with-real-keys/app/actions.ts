@@ -18,7 +18,8 @@ export async function signIn(): Promise<void> {
   await unkey.keys.create({
     apiId: process.env.UNKEY_API_ID!,
     prefix: "docs",
-    ownerId: userId
+    ownerId: userId,
+    recoverable: true
   })
 
 

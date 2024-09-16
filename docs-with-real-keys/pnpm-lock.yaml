@@ -9,11 +9,11 @@ dependencies:
     specifier: ^1.1.0
     version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
   '@unkey/api':
-    specifier: ^0.23.0
-    version: 0.23.0
+    specifier: ^0.26.1
+    version: 0.26.1
   '@unkey/nextjs':
-    specifier: ^0.17.2
-    version: 0.17.2
+    specifier: ^0.17.6
+    version: 0.17.6
   class-variance-authority:
     specifier: ^0.7.0
     version: 0.7.0
@@ -272,8 +272,8 @@ packages:
       '@types/prop-types': 15.7.12
       csstype: 3.1.3
 
-  /@unkey/api@0.23.0:
-    resolution: {integrity: sha512-N4mFiIQdzBaqDGtBZ70y8d7rNeRgi2iEWac7BgTsiflx12BfMHWd4oMglmUJ4uqHNmNqm3yNVSih7BY24H5K8g==}
+  /@unkey/api@0.26.1:
+    resolution: {integrity: sha512-WSYOeZjGbFkO9yA4UsNS6NjprUF9OAYIlBHN/7iRUaFBq+PL502Qe10xNwiwoppYhW6PnrCFobW92vrkjHTcjA==}
     dependencies:
       '@unkey/rbac': 0.3.1
     dev: false
@@ -284,10 +284,10 @@ packages:
       zod: 3.23.8
     dev: false
 
-  /@unkey/nextjs@0.17.2:
-    resolution: {integrity: sha512-0YM3VCQdjs/u+YsE4Rj7av04yVo8gus3QjS1tD7/7VlqKku/V70++Qg//4HxMTUEgtKfSNhrXWXuLd6rYVOIbg==}
+  /@unkey/nextjs@0.17.6:
+    resolution: {integrity: sha512-26Ti+ARYLyADL1pNZmKtYdyf+KSN7NrkvfUxKnIRGQEra60q23pSoeVgzCZNBCxe7WbfRS5gyBqEjk2JinU7UA==}
     dependencies:
-      '@unkey/api': 0.23.0
+      '@unkey/api': 0.26.1
     dev: false
 
   /@unkey/rbac@0.3.1:
