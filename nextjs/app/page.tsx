@@ -56,7 +56,7 @@ export default function Home() {
         </a>
 
         <a
-          href="https://github.com/unkeyed/unkey/tree/main/examples"
+          href="https://github.com/unkeyed/examples"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-gray-700 hover:dark:bg-gray-800/30"
           target="_blank"
           rel="noopener noreferrer"
