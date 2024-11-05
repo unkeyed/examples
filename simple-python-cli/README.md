@@ -85,9 +85,9 @@ python -m venv .venv
 source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 ```
 
-2. Install development dependencies:
+2. Install dependencies:
 ```bash
-pip install -r requirements-dev.txt  # If you have separate dev requirements
+pip install -r requirements.txt 
 ```
 
 ## Error Handling
