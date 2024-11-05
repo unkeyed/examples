@@ -19,7 +19,7 @@ pip install -r requirements.txt
 
 3. Create a `.env` file in the project root:
 ```bash
-echo "UNKEY_BEARER_AUTH=your_root_key_here" > .env
+echo "UNKEY_ROOT_KEY=your_root_key_here" > .env
 ```
 
 **Important**: Replace `your_root_key_here` with your actual Unkey root key. Never commit the `.env` file to version control.

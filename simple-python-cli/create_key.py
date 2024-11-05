@@ -64,11 +64,12 @@ def main():
     args = parser.parse_args()
     
     # Initialize Unkey client
-    bearer_token = os.getenv("UNKEY_BEARER_AUTH")
-    if not bearer_token:
-        raise ValueError("UNKEY_BEARER_AUTH environment variable is required")
+    root_key = os.getenv("UNKEY_ROOT_KEY")
+    if not root_key:
+        raise ValueError("UNKEY_ROOT_KEY environment variable is required")
     
-    client = Unkey(bearer_auth=bearer_token)
+    # Keep eye on `bearer_auth`, subject to change name
+    client = Unkey(bearer_auth=root_key)
     
     # Build request body
     request = {
