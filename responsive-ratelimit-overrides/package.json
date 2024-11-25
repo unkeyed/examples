@@ -1,0 +1,12 @@
+{
+  "name": "responsive-ratelimit-overrides",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "Andreas Thomas",
+  "license": "MIT",
+  "dependencies": {
+    "@unkey/api": "^0.27.0"
+  }
+}
