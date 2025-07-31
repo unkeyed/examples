@@ -1,0 +1,44 @@
+lockfileVersion: '6.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+dependencies:
+  '@unkey/hono':
+    specifier: 2.0.0-canary.1
+    version: 2.0.0-canary.1(hono@4.8.10)
+
+packages:
+
+  /@unkey/api@2.0.0:
+    resolution: {integrity: sha512-hCC4D+RrkqrPg1EJ2PbCSiWnlnIveeGF5S3+EvOTP1J33CIzFYlDxO212oHffi317m1GSTojlF7qW4pgjhpLsQ==}
+    hasBin: true
+    peerDependencies:
+      '@modelcontextprotocol/sdk': '>=1.5.0 <1.10.0'
+    peerDependenciesMeta:
+      '@modelcontextprotocol/sdk':
+        optional: true
+    dependencies:
+      zod: 3.25.76
+    dev: false
+
+  /@unkey/hono@2.0.0-canary.1(hono@4.8.10):
+    resolution: {integrity: sha512-CIGPEBID+AnuT9QgCVXSbszHVgzKae/YBARb7yeuac8YAhEmPFaJDeG5OVmgiMM35JvMnyGuHiP7p3hr0E+1JA==}
+    peerDependencies:
+      hono: ^4.6.3
+    dependencies:
+      '@unkey/api': 2.0.0
+      hono: 4.8.10
+    transitivePeerDependencies:
+      - '@modelcontextprotocol/sdk'
+    dev: false
+
+  /hono@4.8.10:
+    resolution: {integrity: sha512-DRMYbR3aFk6YET1FCSAFbgF2cWYTz5j0YAFYPECx9fmrbKBDAYnWU+YCgRTpOaatxMYN6e68U/2IG39zRP4W/A==}
+    engines: {node: '>=16.9.0'}
+    dev: false
+
+  /zod@3.25.76:
+    resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
+    dev: false
