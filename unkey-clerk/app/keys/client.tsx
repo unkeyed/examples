@@ -17,10 +17,12 @@ import { create } from "./create";
 const UnkeyElements = () => {
   const [key, setKey] = useState<string>("");
   const [secret, setSecret] = useState<string>("");
+  const [meta, setMeta] = useState<any>(null);
+  const [data, setData] = useState<any>(null);
   async function onCreate(formData: FormData) {
     const res = await create(formData);
-    if (res) {
-      setKey(res.key?.key ?? "");
+    if (res && res.data) {
+      setKey(res.data.key ?? "");
     }
   }
   const getData = async () => {
@@ -30,7 +32,9 @@ const UnkeyElements = () => {
       },
     });
     const data = await res.json();
-    setSecret(data.result);
+    setSecret(data.result.data.keyId);
+    setMeta(data.result.meta);
+    setData(data.result.data);
   };
   return (
     <div className="mt-8">
@@ -44,7 +48,7 @@ const UnkeyElements = () => {
             <div className="grid items-center w-full gap-4">
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="name">API Key Name</Label>
-                <Input name="name" placeholder="My Awesome API " />
+                <Input name="name" placeholder="My Awesome API" />
               </div>
             </div>
           </CardContent>
@@ -79,10 +83,16 @@ const UnkeyElements = () => {
                 Get Data
               </Button>
               <div className="grid items-center w-full gap-4">
-                <div className="flex flex-col space-y-1.5">
+                <div className="flex flex-col space-y-1.5 py-2">
                   <Label htmlFor="name">Secret Data</Label>
                   <Input name="name" value={JSON.stringify(secret)} />
                 </div>
+              </div>
+              <div className="mt-4 border p-4 rounded-md bg-muted">
+                <Label htmlFor="name">Meta Data</Label>
+                <pre className="text-xs">{JSON.stringify(meta, null, 2)}</pre>
+                <Label htmlFor="name">Key Data</Label>
+                <pre className="text-xs">{JSON.stringify(data, null, 2)}</pre>
               </div>
             </CardContent>
           </Card>

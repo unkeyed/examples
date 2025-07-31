@@ -14,12 +14,14 @@ export async function create(formData: FormData) {
     return null;
   }
 
-  const name = (formData.get("name") as string) ?? "My Awesome API";
-  const unkey = new Unkey({ token });
-  const key = await unkey.keys.create({
-    name: name,
-    ownerId: userId,
+  const name = formData.get("name") as string;
+  // Ensure name is never empty - use default if empty or null
+  const keyName = name && name.trim().length > 0 ? name.trim() : "My Awesome API";
+  
+  const unkey = new Unkey({ rootKey: token });
+  const res = await unkey.keys.createKey({
+    name: keyName,
     apiId,
   });
-  return { key: key.result };
+  return { data: res.data, meta: res.meta };
 }
