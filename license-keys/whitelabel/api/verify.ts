@@ -1,25 +1,32 @@
-import { verifyKey } from "@unkey/api";
+import { Unkey } from "@unkey/api";
 
 export async function POST(req: Request) {
-  const { license } = (await req.json()) as { license: string };
-
-  const unkey = await verifyKey({
-    key: license,
-    apiId: process.env.UNKEY_API_ID!,
-  });
-
-  if (unkey.error) {
-    console.error(unkey.error);
-    return Response.json({ error: unkey.error.message }, { status: 500 });
+  const rootKey = process.env.UNKEY_ROOT_KEY;
+  if (!rootKey) {
+    return Response.json(
+      { error: "Server configuration error" },
+      { status: 500 },
+    );
   }
 
-  return Response.json(
-    {
-      valid: unkey.result.valid,
-      expires: unkey.result.expires,
-    },
-    {
-      status: unkey.result.valid ? 200 : 403,
-    }
-  );
+  const unkey = new Unkey({ rootKey });
+
+  try {
+    const { license } = (await req.json()) as { license: string };
+
+    const response = await unkey.keys.verifyKey({ key: license });
+
+    return Response.json(
+      {
+        valid: response.data.valid,
+        expires: response.data.expires,
+      },
+      {
+        status: response.data.valid ? 200 : 403,
+      },
+    );
+  } catch (error) {
+    console.error("Key verification error:", error);
+    return Response.json({ error: "Internal Server Error" }, { status: 500 });
+  }
 }
