@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "Bun server with unkey.dev",
   "scripts": {
-    "dev": "bun run ./index.ts"
+    "dev": "bun run ./server.ts"
   },
   "author": "Andreas Thomas",
   "license": "ISC",
   "dependencies": {
-    "@unkey/api": "^0.22.1"
+    "@unkey/api": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.19"
   }
 }
