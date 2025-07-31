@@ -4,8 +4,10 @@ A simple deno server with unkey.
 
 ## Run
 
+`deno add npm:@unkey/api@latest`
+
 ```bash
-deno run --allow-net --allow-env server.ts
+deno run server.ts
 ```
 
 ## Test
