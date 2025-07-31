@@ -1,19 +1,23 @@
+import { Unkey } from "@unkey/api";
 
-import {Ratelimit} from "@unkey/ratelimit"
-
-const unkey = new Ratelimit({
+const unkey = new Unkey({
   rootKey: process.env.UNKEY_ROOT_KEY!,
-  namespace: "nextjs-route-demo",
-  async: true,
-  limit: 10,
-  duration: "5m"
-})
+});
 
-export const GET = async(request:Request):Promise<Response> =>{
+export const GET = async (request: Request): Promise<Response> => {
+  const ip = request.headers.get("x-forwarded-for") ?? "anonymous";
 
-  const ip = request.headers.get("x-forwarded-for") ?? "anonymous"
+  try {
+    const res = await unkey.ratelimit.limit({
+      namespace: "<you_must_create_namespace_on_app.unkey.com/ratelimits>",
+      identifier: ip,
+      limit: 10,
+      duration: 300000, // 5 minutes in milliseconds
+    });
 
-  const res = await unkey.limit(ip)
-
-  return Response.json(res)
-}
+    return Response.json(res.data);
+  } catch (error) {
+    console.error("Rate limit error:", error);
+    return Response.json({ error: "Internal Server Error" }, { status: 500 });
+  }
+};
