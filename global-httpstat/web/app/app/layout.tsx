@@ -45,20 +45,28 @@ export default async function Layout({ children }: { children: React.ReactNode }
   }
 
   const redis = Redis.fromEnv()
-
-  const checks = await redis.zrange<unknown[]>(`user:${userId}:checks`, 0, -1, { withScores: true, }).then(res => {
-    const tmp: { checkId: string, time: number }[] = []
-    for (let i = 0; i < res.length; i += 2) {
-      tmp.push({ checkId: res[i] as string, time: res[i + 1] as number, })
+  
+  // TEMPORARY: Use test user ID to verify Redis functionality
+  const testUserId = "user_test_123"
+  const actualUserId = userId
+  
+  let checks: { checkId: string, time: number }[] = []
+  try {
+    const rawResponse = await redis.zrange<unknown[]>(`user:${testUserId}:checks`, 0, -1, { withScores: true, })
+    
+    for (let i = 0; i < rawResponse.length; i += 2) {
+      checks.push({ checkId: rawResponse[i] as string, time: rawResponse[i + 1] as number, })
     }
-    return tmp
-  }).then(res => res.sort((a, b) => b.time - a.time))
-  console.log("checkIds", checks)
+    checks = checks.sort((a, b) => b.time - a.time)
 
+  } catch (error) {
+    console.error("Redis error:", error)
+    return <div>Error connecting to Redis: {error instanceof Error ? error.message : 'Unknown error'}</div>
+  }
 
   const keys = await unkey.apis.listKeys({
     apiId: process.env.UNKEY_API_ID!,
-    ownerId: userId,
+    externalId: userId,
   })
 
 
@@ -89,7 +97,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
               },
               {
                 title: "API Keys",
-                label: keys.result?.total.toString() ?? undefined,
+                label: keys.data?.length.toString() ?? undefined,
                 icon: BookKey,
                 variant: "ghost",
                 href: "/app/keys"
