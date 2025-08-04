@@ -9,10 +9,10 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20231016.0",
     "typescript": "^5.0.4",
-    "wrangler": "^3.14.0"
+    "wrangler": "^3.114.12"
   },
   "dependencies": {
-    "@unkey/api": "^0.22.1",
+    "@unkey/api": "^2.0.0",
     "deploy": "^1.0.3",
     "pnpm": "^8.9.2",
     "run": "^1.4.0"

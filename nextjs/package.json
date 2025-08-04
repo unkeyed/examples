@@ -12,8 +12,8 @@
     "@types/node": "^22.9.0",
     "@types/react": "^18.2.31",
     "@types/react-dom": "^18.2.14",
-    "@unkey/api": "^0.26.2",
-    "@unkey/nextjs": "^0.17.1",
+    "@unkey/api": "^2.0.0",
+    "@unkey/nextjs": "2.0.0-canary.1",
     "autoprefixer": "^10.4.16",
     "next": "^15.0.3",
     "postcss": "^8.4.31",
@@ -21,5 +21,6 @@
     "react-dom": "^18.2.0",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.2.2"
-  }
+  },
+  "packageManager": "pnpm@9.15.5+sha512.845196026aab1cc3f098a0474b64dfbab2afe7a1b4e91dd86895d8e4aa32a7a6d03049e2d0ad770bbe4de023a7122fb68c1a1d6e0d033c7076085f9d5d4800d4"
 }
