@@ -1,5 +1,7 @@
 # Unkey with Clerk
 
+This example demonstrates how to use Unkey v2 API with Clerk authentication.
+
 ## Getting Started
 
 First, make sure you have a Clerk and Unkey account, and add them to the `.env` you can see an example in the `.env.example`.
@@ -13,7 +15,7 @@ UNKEY_ROOT_KEY=unkey_xxxxxxxxxxxxxx
 
 Then you can run the server locally
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -22,3 +24,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 - [Blog Post](https://unkey.dev/blog/using-unkey-with-auth) - learn about how this project works
 - [Getting Started](https://unkey.dev/docs/quickstart) - A quickstart guide to Unkey
+- [Unkey v2 API Documentation](https://unkey.dev/docs) - Documentation for the v2 API
