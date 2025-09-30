@@ -4,7 +4,7 @@ import { spawn } from "child_process";
 import { promises as fs } from "fs";
 import { readFileSync, writeFileSync } from "fs";
 import http from "http";
-import { ParsedUrlQuery } from "node:querystring";
+type ParsedUrlQuery = { [key: string]: string | string[] | undefined };
 import os from "os";
 import path from "path";
 import url from "url";
@@ -52,9 +52,9 @@ programm.name("globalstat").description("httpstat, but globally").version(versio
 programm
   .command("check")
   .argument("<url>", "the url to check")
-  .option<number>("-n, --runs <RUNS>", "the number of times to run the check", (s) => parseInt(s), 1)
-  .option<string>("-m, --method <METHOD>", "the http method to use", "GET")
-  .option<string[]>("-r, --regions <REGION1>,[REGION2>", "the regions to run the check from, comma separated to check multiple regions", s => s.split(","), ["fra"])
+  .option("-n, --runs <RUNS>", "the number of times to run the check", (s) => parseInt(s), 1)
+  .option("-m, --method <METHOD>", "the http method to use", "GET")
+  .option("-r, --regions <REGION1>,[REGION2>", "the regions to run the check from, comma separated to check multiple regions", (s) => s.split(","), ["fra"])
   .description("Check the status of a url")
   .action(async (url, options) => {
 

@@ -2,7 +2,7 @@
 
 
 import { z } from "zod";
-import { verifyKey } from "@unkey/api"
+import { Unkey } from "@unkey/api"
 import { initRequestSchema, initResponseSchema, checkRequestSchema, checkResponseSchema } from "@/app/lib/schema";
 import { customAlphabet } from "nanoid"
 
@@ -26,11 +26,15 @@ export async function POST(request: Request) {
     return new Response("authorization header missing", { status: 401 })
   }
 
-  const auth = await verifyKey(key)
-  if (auth.error) {
-    return new Response(auth.error.message, { status: 500 })
+  const unkey = new Unkey({ rootKey: process.env.UNKEY_ROOT_KEY! })
+  const auth = await unkey.keys.verifyKey({
+    key: key,
+  })
+
+  if (!auth.data) {
+    return new Response("invalid key", { status: 401 })
   }
-  if (!auth.result.valid) {
+  if (!auth.data.valid) {
     return new Response("invalid key", { status: 401 })
   }
 
@@ -73,11 +77,23 @@ export async function POST(request: Request) {
 
   const p = redis.pipeline()
   p.set(`check:${res.checkId}`, res, { ex: 60 * 60 * 24 * 30 })
-  p.zadd(`user:${auth.result.ownerId}:checks`, {
+  p.zadd(`user:${auth.data.identity?.externalId}:checks`, {
     score: Date.now(),
     member: res.checkId
   })
-  await p.exec()
+  
+  console.log("Storing check data:")
+  console.log("- Check ID:", res.checkId)
+  console.log("- User external ID:", auth.data.identity?.externalId)
+  console.log("- Redis key for user checks:", `user:${auth.data.identity?.externalId}:checks`)
+  
+  try {
+    await p.exec()
+    console.log("Successfully stored check data in Redis")
+  } catch (error) {
+    console.error("Failed to store check data in Redis:", error)
+    return new Response("Failed to store check data", { status: 500 })
+  }
 
   return new Response(JSON.stringify(
     res

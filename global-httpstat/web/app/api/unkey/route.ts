@@ -11,13 +11,16 @@ export async function POST(request: Request) {
   }
   const unkey = new Unkey({ rootKey: process.env.UNKEY_ROOT_KEY });
 
-  const { result, error } = await unkey.keys.create({
+  const { meta,data } = await unkey.keys.createKey({
     apiId: process.env.UNKEY_API_ID,
     prefix: "gs",
-    ownerId: id,
+    externalId: id,
   });
-
-  if (error) {
+  const result = {
+    meta: meta,
+    data: data,
+  };
+  if (!data) {
     return NextResponse.json({
       statusCode: 500,
       message: "Error creating key – please ensure apiId is valid.",
